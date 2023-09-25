@@ -1,0 +1,27 @@
+.contactItem:not(:last-child) {
+    
+    margin-bottom: 10px;
+}
+
+.contactItem::before {
+    content: '';
+    
+    display: flex;
+    
+    height: 15px;
+    width: 15px;
+
+    margin: 15px 15px 15px 0;
+
+    background-color: black;
+    border-radius: 50%;
+}
+
+.contactItem {
+    display:flex;
+    align-items: center;
+}
+
+.deleteButton {
+    margin-left: 15px;
+}
