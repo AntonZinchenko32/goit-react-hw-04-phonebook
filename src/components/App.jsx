@@ -31,8 +31,8 @@ export const App = () => {
 
     if (!gotMatch) {
       // Асинхронно додаэмо новий контакт до масиву контактів в стані додатку
-
-      setContacts([...contacts, { id: nanoid(), name, number }]);
+      if (contacts) setContacts([...contacts, { id: nanoid(), name, number }]);
+      else setContacts([{ id: nanoid(), name, number }]);
     } else {
       alert(`${name} already in list`);
     }
@@ -93,7 +93,6 @@ export const App = () => {
       >
         Contacts
       </h1>
-
       <Filter searchContactFunc={handleFilter} />
       <ContactList
         contacts={contactFiltering()}
