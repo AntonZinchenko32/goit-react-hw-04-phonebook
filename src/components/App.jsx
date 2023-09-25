@@ -8,17 +8,19 @@ import ContactList from './ContactList/ContactList';
 export const App = () => {
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
+  const [isItInitialRender, setIsItInitialRender] = useState(true);
 
   useEffect(() => {
+    setIsItInitialRender(false);
     const savedContacts = JSON.parse(localStorage.getItem('contacts'));
 
     if (savedContacts) setContacts(savedContacts);
   }, []);
 
   useEffect(() => {
-    if (contacts.length !== 0)
+    if (!isItInitialRender)
       localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  }, [contacts, isItInitialRender]);
 
   // Додавання контактів із забороною на додавання з однаковими іменами ***************************************************
   const addContactFunc = newContact => {
